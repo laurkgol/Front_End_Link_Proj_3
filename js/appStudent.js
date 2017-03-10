@@ -30,7 +30,7 @@ angular
   .factory( "StudentFactory", [ "$resource", StudentFactoryFunction ])
 
 function StudentFactoryFunction( $resource ){
-    return $resource( "http://localhost:3000/students/:id", {}, {
+    return $resource( "http://localhost:3000/students/:id.json", {}, {
         update: { method: "PUT" }
     })
   }
@@ -51,7 +51,7 @@ function StudentFactoryFunction( $resource ){
    })
    .state("studentShow", {
         url: "/students/:id",
-        templateUrl: "js/ng-views/events/students/show.html",
+        templateUrl: "js/ng-views/students/show.html",
         controller: "StudentShowController",
         controllerAs: "vm"
       })
