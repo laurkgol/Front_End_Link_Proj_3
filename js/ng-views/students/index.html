@@ -1,0 +1,8 @@
+<a data-ui-sref="studentNew">New event</a>
+<h1>Student Index</h1>
+
+<div data-ng-repeat="student in vm.students">
+
+   <p><a data-ui-sref="studentShow({id: student.id})">{{student.name}}</a></p>
+
+</div>

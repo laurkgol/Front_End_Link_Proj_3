@@ -1,0 +1,11 @@
+<h2> Edit Student</h2>
+
+<form>
+  <input value="Name" data-ng-model="vm.student.name" />
+  <input value="email" data-ng-model="vm.student.email" />
+  <input value="Linkedin" data-ng-model="vm.student.linkedin_url" />
+  <input value="Github" data-ng-model="vm.student.github_url"/>
+  <textarea value="bio" data-ng-model="vm.grumble.bio"></textarea>
+<button data-ng-click="vm.update()">Update</button>
+  <button data-ng-click="vm.destroy()">Delete</button>
+</form>
