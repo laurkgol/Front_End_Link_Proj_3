@@ -51,8 +51,8 @@
 
 
 
-"use strict";
-
+// "use strict";
+console.log("im app.js")
 
   angular
   .module("link", [
@@ -61,7 +61,7 @@
     ])
     .config([
       "$stateProvider",
-      RouterFunction
+      EventRouterFunction
     ])
     .factory("eventFactory", [
       "$resource",
@@ -87,7 +87,7 @@
       linkEventEditControllerFunction
     ]);
 
-    function RouterFunction($stateProvider){
+    function EventRouterFunction($stateProvider){
       $stateProvider
       .state("eventIndex", {
         url:"/events",
