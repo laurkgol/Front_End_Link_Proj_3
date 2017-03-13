@@ -17,6 +17,11 @@ angular
       "StudentFactory",
       "$stateParams", StudentShowControllerFunction
     ])
+    .controller(
+      "AttendanceIndexController", [
+        "AttendanceFactory",
+        "$stateParams", AttendanceIndexControllerFunction
+      ])
   .controller(
     "StudentNewController",
     [ "StudentFactory", StudentNewControllerFunction
@@ -38,6 +43,7 @@ angular
     .controller("linkShowEventController", [
       "eventFactory",
       "$stateParams",
+      "AttendanceFactory",
       linkShowEventControllerFunction
     ])
     .controller("linkEventEditController", [
@@ -50,16 +56,25 @@ angular
     "$resource",
     eventFactoryFunction
   ])
-
-  function StudentFactoryFunction( $resource ){
-      return $resource( "http://localhost:3000/students/:id.json", {}, {
-          update: { method: "PUT" }
-      })
-    }
+  .factory("AttendanceFactory", [
+    "$resource",
+    attendanceFactoryFunction
+  ])
 
     function eventFactoryFunction($resource){
       return $resource("http://localhost:3000/events/:id.json", {}, {
         update: {method: "PUT"}
+      })
+    }
+      function StudentFactoryFunction($resource){
+        return $resource("http://localhost:3000/students/:id.json", {}, {
+          update: {method: "PUT"}
+        })
+      }
+
+    function attendanceFactoryFunction($resource){
+      return $resource("http://localhost:3000/events/:id/attendances.json", {}, {
+        update: {method:"PUT"}
       })
     }
 
@@ -83,6 +98,12 @@ angular
           controller: "StudentShowController",
           controllerAs: "vm"
         })
+      .state("attendanceIndex", {
+            url: "/events/:id/attendances",
+            templateUrl: "js/ng-views/attendances/index.html",
+            controller: "AttendanceIndexController",
+            controllerAs: "vm"
+           })
       .state("studentEdit", {
           url: "/students/:id/edit",
           templateUrl: "js/ng-views/students/edit.html",
@@ -119,7 +140,11 @@ angular
       console.log("you're in the index")
       this.students = StudentFactory.query();
     }
-    function StudentShowControllerFunction (StudentFactory, $stateParams){
+    function AttendanceIndexControllerFunction (AttendanceFactory, $stateParams){
+      console.log("you're in the attendance index")
+      this.attendances = AttendanceFactory.query({id: $stateParams.id});
+    }
+    function StudentShowControllerFunction (StudentFactory, $stateParams ){
       this.student = StudentFactory.get({id: $stateParams.id})
     }
     function StudentNewControllerFunction( StudentFactory ){
@@ -151,8 +176,11 @@ angular
      }
    }
 
-   function linkShowEventControllerFunction(eventFactory, $stateParams){
+   function linkShowEventControllerFunction(eventFactory, $stateParams, AttendanceFactory, StudentFactory){
      this.event = eventFactory.get({id: $stateParams.id});
+     this.attendances = AttendanceFactory.query({id: $stateParams.id});
+     this.student= StudentFactory.query({id: $stateParams.id});
+
    }
 
    function linkEventEditControllerFunction(eventFactory, $stateParams){
@@ -161,6 +189,6 @@ angular
        this.event.$update({id: $stateParams.id});
      }
      this.destroy = function(){
-       this.link.$delete({id: $stateParams.id});
+       this.event.$delete({id: $stateParams.id});
      }
    }

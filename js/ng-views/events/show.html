@@ -5,4 +5,11 @@
   <p>Organized by: {{vm.event.organizer}}</p>
   <p><a href = {{vm.event.event_url}}> Learn More </a></p>
   <a data-ui-sref="eventEdit({id: vm.event.id})">Edit</a>
+  <br>
+  <div> Attendances </div>
+  <div data-ng-repeat="attendance in vm.attendances">
+    {{attendance.comment}}
+    {{attendance.student_id.name}}
+</div>
+
 </div>
