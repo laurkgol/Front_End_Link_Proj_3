@@ -1,3 +1,5 @@
+"use strict";
+
 angular
   .module("link", [
     "ui.router",
@@ -7,6 +9,7 @@ angular
     "$stateProvider",
     RouterFunction
   ])
+  .factory( "StudentFactory", [ "$resource", StudentFactoryFunction ])
   .controller(
     "StudentIndexController", [
       "StudentFactory",
@@ -19,15 +22,14 @@ angular
     ])
   .controller(
     "StudentNewController",
-    [ "StudentFactory", StudentNewControllerFunction
+    [ "StudentFactory","$state", StudentNewControllerFunction
   ])
-  .controller( "StudentEditController", [
+  .controller("StudentEditController", [
       "StudentFactory",
       "$stateParams",
       StudentEditControllerFunction
     ])
 
-  .factory( "StudentFactory", [ "$resource", StudentFactoryFunction ])
 
 function StudentFactoryFunction( $resource ){
 
@@ -66,21 +68,23 @@ function StudentFactoryFunction( $resource ){
 
   function StudentIndexControllerFunction (StudentFactory){
     console.log("you're in the index")
-    this.students = StudentFactory.query();
+    this.students = StudentFactory.query()
   }
   function StudentShowControllerFunction (StudentFactory, $stateParams){
     this.student = StudentFactory.get({id: $stateParams.id})
   }
-  function StudentNewControllerFunction( StudentFactory ){
-    this.student = new StudentFactory();
+  function StudentNewControllerFunction(StudentFactory, $state){
+    this.student = new StudentFactory()
     this.create = function(){
-      this.student.$save()
+      this.student.$save(function(student){
+        console.log ("hello")
+        $state.go("studentShow",{id: student.id})
+      })
     }
   }
 
-
   function StudentEditControllerFunction( StudentFactory, $stateParams ){
-   this.student = StudentFactory.get({id: $stateParams.id});
+   this.student = StudentFactory.get({id: $stateParams.id})
    this.update = function(){
      this.student.$update({id: $stateParams.id})
    }
