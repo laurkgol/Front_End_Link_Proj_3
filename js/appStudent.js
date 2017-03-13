@@ -9,7 +9,9 @@ angular
     "$stateProvider",
     RouterFunction
   ])
+
   .factory( "StudentFactory", [ "$resource", StudentFactoryFunction ])
+
   .controller(
     "StudentIndexController", [
       "StudentFactory",
@@ -31,12 +33,6 @@ angular
     ])
 
 
-function StudentFactoryFunction( $resource ){
-
-    return $resource( "http://localhost:3000/students/:id.json", {}, {
-        update: { method: "PUT" }
-    })
-  }
 
   function RouterFunction($stateProvider){
     $stateProvider
@@ -66,6 +62,12 @@ function StudentFactoryFunction( $resource ){
       })
   }
 
+  function StudentFactoryFunction( $resource ){
+    return $resource( "http://localhost:3000/students/:id", {}, {
+          update: { method: "PUT" }
+      })
+    }
+
   function StudentIndexControllerFunction (StudentFactory){
     console.log("you're in the index")
     this.students = StudentFactory.query()
@@ -73,6 +75,7 @@ function StudentFactoryFunction( $resource ){
   function StudentShowControllerFunction (StudentFactory, $stateParams){
     this.student = StudentFactory.get({id: $stateParams.id})
   }
+
   function StudentNewControllerFunction(StudentFactory, $state){
     this.student = new StudentFactory()
     this.create = function(){
@@ -82,13 +85,3 @@ function StudentFactoryFunction( $resource ){
       })
     }
   }
-
-  function StudentEditControllerFunction( StudentFactory, $stateParams ){
-   this.student = StudentFactory.get({id: $stateParams.id})
-   this.update = function(){
-     this.student.$update({id: $stateParams.id})
-   }
-   this.destroy = function(){
-      this.student.$delete({id: $stateParams.id})
-    }
- }
