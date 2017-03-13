@@ -30,7 +30,7 @@ angular
   .factory( "StudentFactory", [ "$resource", StudentFactoryFunction ])
 
 function StudentFactoryFunction( $resource ){
-    return $resource( "http://localhost:3000/grumbles/:id", {}, {
+    return $resource( "http://localhost:3000/students/:id", {}, {
         update: { method: "PUT" }
     })
   }
