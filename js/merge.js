@@ -24,7 +24,7 @@ angular
       ])
   .controller(
     "StudentNewController",
-    [ "StudentFactory", StudentNewControllerFunction
+    [ "StudentFactory", "$state", StudentNewControllerFunction
   ])
   .controller( "StudentEditController", [
       "StudentFactory",
@@ -140,20 +140,25 @@ angular
       console.log("you're in the index")
       this.students = StudentFactory.query();
     }
+<<<<<<< HEAD
     function AttendanceIndexControllerFunction (AttendanceFactory, $stateParams){
       console.log("you're in the attendance index")
       this.attendances = AttendanceFactory.query({id: $stateParams.id});
     }
     function StudentShowControllerFunction (StudentFactory, $stateParams ){
+=======
+    function StudentNewControllerFunction(StudentFactory, $state){
+     this.student = new StudentFactory()
+     this.create = function(){
+       this.student.$save().then(function(student){)
+         $state.go("studentShow",{id: student.id})
+       })
+     }
+   }
+    function StudentShowControllerFunction (StudentFactory, $stateParams){
+>>>>>>> 4dcaf661c048fa755a5d69b1ad1ee820b12ec93f
       this.student = StudentFactory.get({id: $stateParams.id})
     }
-    function StudentNewControllerFunction( StudentFactory ){
-      this.student = new StudentFactory();
-      this.create = function(){
-        this.student.$save()
-      }
-    }
-
 
     function StudentEditControllerFunction( StudentFactory, $stateParams ){
      this.student = StudentFactory.get({id: $stateParams.id});
@@ -161,7 +166,9 @@ angular
        this.student.$update({id: $stateParams.id})
      }
      this.destroy = function(){
-        this.student.$delete({id: $stateParams.id})
+        this.student.$delete({id: $stateParams.id}).then(function(student){
+          $state.go("studentIndex")
+        })
       }
    }
    function linkEventIndexControllerFunction(eventFactory){
@@ -172,7 +179,9 @@ angular
    function linkNewEventControllerFunction(eventFactory){
      this.event = new eventFactory();
      this.create = function(){
-       this.event.$save()
+       this.event.$save().then(function(event){)
+         $state.go("eventShow",{id: event.id})
+       })
      }
    }
 
