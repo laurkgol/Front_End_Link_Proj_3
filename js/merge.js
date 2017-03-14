@@ -184,8 +184,9 @@ function StudentEditControllerFunction( StudentFactory, $stateParams, $state ){
 
  this.destroy = function(){
     this.student.$delete({id: $stateParams.id}).then(function(student){
-      $state.go("StudentIndex")
+      $state.go("StudentIndex", {id: student.id})
     })
+    console.log("student deleted")
   }
 }
 
