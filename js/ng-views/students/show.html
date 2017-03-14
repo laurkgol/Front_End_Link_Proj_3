@@ -1,7 +1,7 @@
 
-<a href="/students"> return to Student Index</a>
 
-<div class= "showstudent">
+
+<div class= "showstudent" ng-controller='StudentShowController as vm'>
 
   <h2>{{vm.student.name}}</h2>
   <p><a href="mailto:"{{vm.student.email}}>{{vm.student.email}}</a></p>
@@ -10,7 +10,7 @@
   <p><a href={{vm.student.github_url}}> Github Profile</a></p>
 
 
-<a data-ui-sref="StudentEdit({id: vm.student.id})"> Edit </a>
+<a data-ui-sref="studentEdit({id: vm.student.id})"> Edit </a>
 
 
 </div>

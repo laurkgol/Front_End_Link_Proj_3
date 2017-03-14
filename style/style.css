@@ -64,7 +64,7 @@ a{
 }
 
 .event{
-  width: 500px;
+  width: 400px;
 }
 .newstudent, .newevent, .showstudent{
   background-color:black;
@@ -78,7 +78,8 @@ a{
 
 }
 .newevent{
-  width: 500px;
+  width: 400px;
+  
 }
 
 .showstudent{
