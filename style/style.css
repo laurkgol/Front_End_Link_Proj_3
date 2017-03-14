@@ -1,3 +1,7 @@
+
+main{
+  font-family: sans-serif;
+}
 nav{
   background-color: rgba(189, 22, 0, 1);
   margin: 0px;
@@ -14,10 +18,15 @@ main{
   margin: 100px;
 }
 
+h2{
+  font-family: 'Pacifico', cursive;
+}
  .navbar{
    text-align: right;
    margin-right: 100px;
    font-family: 'Pacifico', cursive;
+   position: relative;
+   top: -20px;
 
  }
 .logo{
@@ -25,8 +34,49 @@ main{
   font-size: 30pt;
   margin-left: 100px;
   margin-top: 30px;
+  position: relative;
+  bottom: -30px;
 }
 
 a{
   text-decoration: none;
+}
+
+.students, .events{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.student, .event{
+  background-color:black;
+  margin: 10px;
+  padding: 10px;
+  color: white;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+}
+
+.event{
+  width: 500px;
+}
+.newstudent, .newevent{
+  background-color:black;
+  margin: 10px;
+  padding: 10px;
+  width: 200px;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+.newevent{
+  width: 500px;
 }
