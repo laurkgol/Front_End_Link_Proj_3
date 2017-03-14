@@ -2,10 +2,10 @@
 
 <h2>Dev Events</h2>
 <div class="events">
-  <a class="newevent" data-ui-sref="eventNew">New event</a>
+  <a class="newevent" data-ui-sref="EventNew">New event</a>
   <div data-ng-repeat="event in vm.events">
     <div class="event">
-      <p><a data-ui-sref="eventShow({id: event.id})">{{event.name}}</a>
+      <p><a data-ui-sref="EventShow({id: event.id})">{{event.name}}</a>
         <p>{{event.date}}, {{event.time}}</p>
         <p>{{event.location}}</p>
         <p>Organized by: {{event.organizer}}</p>
