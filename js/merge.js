@@ -224,8 +224,8 @@ function EventEditControllerFunction(EventFactory, $stateParams){
    this.event.$delete({id: $stateParams.id});
  }
 }
-
-
+function WelcomeControllerFunction(){
+}
     function StudentEditControllerFunction(StudentFactory, $stateParams){
      this.student = StudentFactory.get({id: $stateParams.id})
      this.update = function(){
@@ -274,8 +274,3 @@ function EventEditControllerFunction(EventFactory, $stateParams){
        this.event.$delete({id: $stateParams.id});
      }
    }
-
-   function welcomeControllerFunction(){
-
-   }
-
