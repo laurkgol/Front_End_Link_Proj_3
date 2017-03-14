@@ -1,10 +1,10 @@
 
 <h2>Student Index</h2>
 <div class="students">
-<a class="newstudent" data-ui-sref="StudentNew">Add new student</a>
+<a class="newstudent" data-ui-sref="studentNew">Add new student</a>
   <div data-ng-repeat="student in vm.students">
     <div class="student">
-     <p><a data-ui-sref="StudentShow({id: student.id})">{{student.name}}</a></p>
+     <p><a data-ui-sref="studentShow({id: student.id})">{{student.name}}</a></p>
      <p>{{student.bio}}</p>
      <a href={{student.linkedin_url}}>LinkedIn Profile</a>
      <br>
