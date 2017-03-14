@@ -219,3 +219,7 @@ angular
        this.event.$delete({id: $stateParams.id});
      }
    }
+
+   function welcomeControllerFunction(){
+
+   }
