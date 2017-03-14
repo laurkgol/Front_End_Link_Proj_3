@@ -1,13 +1,14 @@
 
 <a href="/students"> return to Student Index</a>
 
-<div >
+<div class= "showstudent">
 
   <h2>{{vm.student.name}}</h2>
-  <p>{{vm.student.email}}</p>
-  <p>{{vm.student.linkedin_url}}</p>
-  <p>{{vm.student.github_url}}</p>
-  <p>{{vm.student.bio}}</p>
+  <p><a href="mailto:"{{vm.student.email}}>{{vm.student.email}}</a></p>
+  <p>{{vm.student.bio}}</p></p>
+  <p><a href={{student.linkedin_url}}>LinkedIn Profile</a></p>
+  <p><a href={{vm.student.github_url}}> Github Profile</a></p>
+
 
 <a data-ui-sref="studentEdit({id: vm.student.id})"> Edit </a>
 
