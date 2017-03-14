@@ -11,6 +11,7 @@ angular
     "$resource",
     StudentFactoryFunction
   ])
+
   .factory("EventFactory", [
     "$resource",
     EventFactoryFunction
@@ -19,7 +20,7 @@ angular
     "$resource",
     AttendanceFactoryFunction
   ])
-  .controller("welcomeController",[
+  .controller("WelcomeController",[
     WelcomeControllerFunction
   ])
   .controller("StudentIndexController", [
@@ -27,12 +28,12 @@ angular
     "$stateParams",
     StudentIndexControllerFunction
   ])
-  .controller("studentShowController", [
+  .controller("StudentShowController", [
     "StudentFactory",
     "$stateParams",
     StudentShowControllerFunction
   ])
-  .controller("attendanceIndexController", [
+  .controller("AttendanceIndexController", [
     "AttendanceFactory",
     "$stateParams",
     AttendanceIndexControllerFunction
@@ -89,61 +90,61 @@ function AttendanceFactoryFunction($resource){
 
 function RouterFunction($stateProvider){
   $stateProvider
-    .state("welcome",{
+    .state("Welcome",{
       url: "/",
       templateUrl: "js/ng-views/welcome.html",
       controller: "WelcomeController",
       controllerAs: "vm"
     })
-    .state ("studentIndex", {
+    .state ("StudentIndex", {
       url: "/students",
       templateUrl: "js/ng-views/students/index.html",
       controller: "StudentIndexController",
       controllerAs: "vm"
     })
-    .state("studentNew", {
+    .state("StudentNew", {
        url: "/students/new",
        templateUrl: "js/ng-views/students/new.html",
        controller: "StudentNewController",
        controllerAs: "vm"
     })
-    .state("studentShow", {
+    .state("StudentShow", {
       url: "/students/:id",
       templateUrl: "js/ng-views/students/show.html",
       controller: "StudentShowController",
       controllerAs: "vm"
     })
-    .state("attendanceIndex", {
+    .state("AttendanceIndex", {
       url: "/events/:id/attendances",
       templateUrl: "js/ng-views/attendances/index.html",
       controller: "AttendanceIndexController",
       controllerAs: "vm"
     })
-    .state("studentEdit", {
+    .state("StudentEdit", {
       url: "/students/:id/edit",
       templateUrl: "js/ng-views/students/edit.html",
       controller: "StudentEditController",
       controllerAs: "vm"
     })
-    .state("eventIndex", {
+    .state("EventIndex", {
       url:"/events",
       templateUrl: "js/ng-views/events/index.html",
       controller: "EventIndexController",
       controllerAs: "vm"
     })
-    .state("eventNew", {
+    .state("EventNew", {
       url: "/events/new",
       templateUrl: "js/ng-views/events/new.html",
       controller: "NewEventController",
       controllerAs: "vm"
     })
-    .state("eventShow", {
+    .state("EventShow", {
       url: "/events/:id",
       templateUrl: "js/ng-views/events/show.html",
       controller: "ShowEventController",
       controllerAs: "vm"
     })
-    .state("eventEdit", {
+    .state("EventEdit", {
       url: "/events/:id/edit",
       templateUrl: "js/ng-views/events/edit.html",
       controller: "EventEditController",
@@ -165,7 +166,7 @@ function StudentNewControllerFunction(StudentFactory, $state){
  this.student = new StudentFactory()
  this.create = function(){
    this.student.$save().then(function(student){
-     $state.go("studentShow",{id: student.id})
+     $state.go("StudentShow",{id: student.id})
    })
  }
 }
@@ -174,15 +175,16 @@ function StudentShowControllerFunction (StudentFactory, $stateParams){
   this.student = StudentFactory.get({id: $stateParams.id})
 }
 
-function StudentEditControllerFunction( StudentFactory, $stateParams ){
+function StudentEditControllerFunction( StudentFactory, $stateParams, $state ){
  this.student = StudentFactory.get({id: $stateParams.id});
  this.update = function(){
    this.student.$update({id: $stateParams.id})
+   console.log("student updated")
  }
 
  this.destroy = function(){
     this.student.$delete({id: $stateParams.id}).then(function(student){
-      $state.go("studentIndex")
+      $state.go("StudentIndex")
     })
   }
 }
@@ -196,7 +198,7 @@ function NewEventControllerFunction(EventFactory){
  this.event = new EventFactory();
  this.create = function(){
    this.event.$save().then(function(event){
-     $state.go("eventShow",{id: event.id})
+     $state.go("EventShow",{id: event.id})
    })
  }
 }
@@ -241,5 +243,4 @@ function EventEditControllerFunction(EventFactory, $stateParams){
 }
 
 function WelcomeControllerFunction(){
-
-}
+  }
