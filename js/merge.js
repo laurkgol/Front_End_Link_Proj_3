@@ -214,6 +214,21 @@ function ShowEventControllerFunction(EventFactory, $stateParams, AttendanceFacto
       event_id: this.event.id
     }
     //here you will use AttendanceFactory to post new Attendance to API
+    function addAttendance(AttendanceFactory, attendance) {
+      let url = `http://localhost:3000/events/${event.id}/attendances.json`
+      $http({
+        method: "POST",
+        url: url,
+        dataType: "json",
+        data: attendance
+      }).done((response) => {
+        console.log('sucess')
+      }).fail(() => {
+        console.log('error')
+      }).always(() => {
+        console.log('request made')
+      })
+    }
   }
 }
 
