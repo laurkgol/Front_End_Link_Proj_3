@@ -168,16 +168,16 @@ angular
       this.student = StudentFactory.get({id: $stateParams.id})
     }
 
-    function StudentEditControllerFunction( StudentFactory, $stateParams ){
-     this.student = StudentFactory.get({id: $stateParams.id});
+    function StudentEditControllerFunction(StudentFactory, $stateParams, $state){
+     this.student = StudentFactory.get({id: $stateParams.id})
+
      this.update = function(){
        this.student.$update({id: $stateParams.id}).then(function (student){
          $state.go("studentIndex")})
-       });
+       
      }
      this.destroy = function(){
-        this.student.$delete({id: $stateParams.id});
-        })
+        this.student.$delete({id: $stateParams.id})
       }
    }
    function linkEventIndexControllerFunction(eventFactory){
