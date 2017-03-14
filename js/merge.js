@@ -44,6 +44,7 @@ angular
       "eventFactory",
       "$stateParams",
       "AttendanceFactory",
+      "StudentFactory",
       linkShowEventControllerFunction
     ])
     .controller("linkEventEditController", [
@@ -186,8 +187,17 @@ angular
    function linkShowEventControllerFunction(eventFactory, $stateParams, AttendanceFactory, StudentFactory){
      this.event = eventFactory.get({id: $stateParams.id});
      this.attendances = AttendanceFactory.query({id: $stateParams.id});
-    //  this.student= StudentFactory.query({id: $stateParams.id});
+     this.students= StudentFactory.query();
+     this.student= StudentFactory.query({id: $stateParams.id});
+    //  let studentString =   JSON.stringify(this.students);
+     console.log(this.students)
+    //  console.log(studentString)
 
+      this.addAttendance = function() {
+        let attendance = {
+          student_id: this.student.id
+        }
+      }
    }
 
    function linkEventEditControllerFunction(eventFactory, $stateParams){
