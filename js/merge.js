@@ -140,23 +140,13 @@ angular
       console.log("you're in the index")
       this.students = StudentFactory.query();
     }
-<<<<<<< HEAD
+
     function AttendanceIndexControllerFunction (AttendanceFactory, $stateParams){
       console.log("you're in the attendance index")
       this.attendances = AttendanceFactory.query({id: $stateParams.id});
     }
     function StudentShowControllerFunction (StudentFactory, $stateParams ){
-=======
-    function StudentNewControllerFunction(StudentFactory, $state){
-     this.student = new StudentFactory()
-     this.create = function(){
-       this.student.$save().then(function(student){)
-         $state.go("studentShow",{id: student.id})
-       })
-     }
-   }
-    function StudentShowControllerFunction (StudentFactory, $stateParams){
->>>>>>> 4dcaf661c048fa755a5d69b1ad1ee820b12ec93f
+
       this.student = StudentFactory.get({id: $stateParams.id})
     }
 
@@ -179,7 +169,7 @@ angular
    function linkNewEventControllerFunction(eventFactory){
      this.event = new eventFactory();
      this.create = function(){
-       this.event.$save().then(function(event){)
+       this.event.$save().then(function(event){
          $state.go("eventShow",{id: event.id})
        })
      }
