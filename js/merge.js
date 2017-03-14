@@ -7,6 +7,9 @@ angular
     "$stateProvider",
     RouterFunction
   ])
+  .controller("welcomeController",[
+    welcomeControllerFunction
+  ])
   .controller(
     "StudentIndexController", [
       "StudentFactory",
@@ -81,6 +84,12 @@ angular
 
     function RouterFunction($stateProvider){
       $stateProvider
+      .state("welcome",{
+        url: "/",
+        templateUrl: "js/ng-views/welcome.html",
+        controller: "welcomeController",
+        controllerAs: "vm"
+      })
       .state ("studentIndex", {
           url: "/students",
           templateUrl: "js/ng-views/students/index.html",
