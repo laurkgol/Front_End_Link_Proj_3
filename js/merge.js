@@ -204,7 +204,8 @@ angular
 
       this.addAttendance = function() {
         let attendance = {
-          student_id: this.student.id
+          student_id: this.student.id,
+          event_id: this.event.id
         }
       }
    }
