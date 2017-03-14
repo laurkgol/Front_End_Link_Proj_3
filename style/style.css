@@ -1,0 +1,32 @@
+nav{
+  background-color: rgba(189, 22, 0, 1);
+  margin: 0px;
+  /*margin-bottom: 20px;*/
+}
+body{
+  background-image: url("https://st.hzcdn.com/simgs/07717dc10523d1b0_4-9915/contemporary-wallpaper.jpg");
+  background-size: cover;
+  background-position: top;
+}
+main{
+  background-color: hsla(207, 10%, 37%, 0.66);
+  padding: 50px;
+  margin: 100px;
+}
+
+ .navbar{
+   text-align: right;
+   margin-right: 100px;
+   font-family: 'Pacifico', cursive;
+
+ }
+.logo{
+  font-family: 'Pacifico', cursive;
+  font-size: 30pt;
+  margin-left: 100px;
+  margin-top: 30px;
+}
+
+a{
+  text-decoration: none;
+}
