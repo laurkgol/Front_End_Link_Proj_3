@@ -5,4 +5,23 @@
   <p>Organized by: {{vm.event.organizer}}</p>
   <p><a href = {{vm.event.event_url}}> Learn More </a></p>
   <a data-ui-sref="eventEdit({id: vm.event.id})">Edit</a>
+  <br><br>
+  <div> Attendances </div>
+  <div data-ng-repeat="attendance in vm.attendances">
+    {{attendance.student_id}}
+    {{attendance.event_id}}
+  </div>
+<br><br>
+  <div class="going">
+    <form >
+
+
+      <select class="rsvp" name="rsvp" >
+        <option ng-repeat="student in vm.students" >{{student.name}}</option>
+
+      </select>
+      <button type="submit" class="btn" ng-submit = "vm.addAttendance()">I'm going</button>
+    </form>
+  </div>
+
 </div>
