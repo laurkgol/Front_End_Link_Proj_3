@@ -225,6 +225,57 @@ function EventEditControllerFunction(EventFactory, $stateParams){
  }
 }
 
-function WelcomeControllerFunction(){
 
-}
+    function StudentEditControllerFunction(StudentFactory, $stateParams){
+     this.student = StudentFactory.get({id: $stateParams.id})
+     this.update = function(){
+       this.student.$update({id: $stateParams.id})
+     }
+     this.destroy = function(){
+        this.student.$delete({id: $stateParams.id})
+      }
+   }
+   function linkEventIndexControllerFunction(eventFactory){
+     console.log("you're in the event index")
+     this.events = eventFactory.query();
+   }
+
+   function linkNewEventControllerFunction(eventFactory){
+     this.event = new eventFactory();
+     this.create = function(){
+       this.event.$save().then(function(event){
+         $state.go("eventShow",{id: event.id})
+       })
+     }
+   }
+
+   function linkShowEventControllerFunction(eventFactory, $stateParams, AttendanceFactory, StudentFactory){
+     this.event = eventFactory.get({id: $stateParams.id});
+     this.attendances = AttendanceFactory.query({id: $stateParams.id});
+     this.students= StudentFactory.query();
+     this.student= StudentFactory.query({id: $stateParams.id});
+    //  let studentString =   JSON.stringify(this.students);
+     console.log(this.students)
+    //  console.log(studentString)
+
+      this.addAttendance = function() {
+        let attendance = {
+          student_id: this.student.id
+        }
+      }
+   }
+
+   function linkEventEditControllerFunction(eventFactory, $stateParams){
+     this.event = eventFactory.get({id: $stateParams.id});
+     this.update = function(){
+       this.event.$update({id: $stateParams.id});
+     }
+     this.destroy = function(){
+       this.event.$delete({id: $stateParams.id});
+     }
+   }
+
+   function welcomeControllerFunction(){
+
+   }
+
