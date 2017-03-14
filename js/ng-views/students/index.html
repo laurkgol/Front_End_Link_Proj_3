@@ -1,8 +1,14 @@
-<a data-ui-sref="studentNew">Add new student</a>
-<h1>Student Index</h1>
 
-<div data-ng-repeat="student in vm.students">
-
-   <p><a data-ui-sref="studentShow({id: student.id})">{{student.name}}</a></p>
-
+<h2>Student Index</h2>
+<div class="students">
+<a class="newstudent" data-ui-sref="studentNew">Add new student</a>
+  <div data-ng-repeat="student in vm.students">
+    <div class="student">
+     <p><a data-ui-sref="studentShow({id: student.id})">{{student.name}}</a></p>
+     <p>{{student.bio}}</p>
+     <a href={{student.linkedin_url}}>LinkedIn Profile</a>
+     <br>
+     <a href={{student.github_url}}>Github Profile</a>
+    </div>
+  </div>
 </div>
