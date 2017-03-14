@@ -27,7 +27,7 @@ angular
     "$stateParams",
     StudentIndexControllerFunction
   ])
-  .controller("studentShowController", [
+  .controller("StudentShowController", [
     "StudentFactory",
     "$stateParams",
     StudentShowControllerFunction
@@ -110,43 +110,43 @@ function RouterFunction($stateProvider){
     .state("studentShow", {
       url: "/students/:id",
       templateUrl: "js/ng-views/students/show.html",
-      controller: "studentShowController",
+      controller: "StudentShowController",
       controllerAs: "vm"
     })
     .state("attendanceIndex", {
       url: "/events/:id/attendances",
       templateUrl: "js/ng-views/attendances/index.html",
-      controller: "attendanceIndexController",
+      controller: "AttendanceIndexController",
       controllerAs: "vm"
     })
     .state("studentEdit", {
       url: "/students/:id/edit",
       templateUrl: "js/ng-views/students/edit.html",
-      controller: "studentEditController",
+      controller: "StudentEditController",
       controllerAs: "vm"
     })
     .state("eventIndex", {
       url:"/events",
       templateUrl: "js/ng-views/events/index.html",
-      controller: "eventIndexController",
+      controller: "EventIndexController",
       controllerAs: "vm"
     })
     .state("eventNew", {
       url: "/events/new",
       templateUrl: "js/ng-views/events/new.html",
-      controller: "newEventController",
+      controller: "NewEventController",
       controllerAs: "vm"
     })
     .state("eventShow", {
       url: "/events/:id",
       templateUrl: "js/ng-views/events/show.html",
-      controller: "showEventController",
+      controller: "ShowEventController",
       controllerAs: "vm"
     })
     .state("eventEdit", {
       url: "/events/:id/edit",
       templateUrl: "js/ng-views/events/edit.html",
-      controller: "eventEditController",
+      controller: "EventEditController",
       controllerAs: "vm"
     })
 }
