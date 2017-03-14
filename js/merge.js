@@ -32,15 +32,16 @@ angular
   .controller( "StudentEditController", [
       "StudentFactory",
       "$stateParams",
+       "$state",
       StudentEditControllerFunction
     ])
     .controller("linkEventIndexController", [
       "eventFactory",
-      "$stateParams",
+      "$stateParams", "$state",
       linkEventIndexControllerFunction
     ])
     .controller("linkNewEventController", [
-      "eventFactory",
+      "eventFactory", "$state",
       linkNewEventControllerFunction
     ])
     .controller("linkShowEventController", [
@@ -55,7 +56,10 @@ angular
       "$stateParams",
       linkEventEditControllerFunction
     ])
-  .factory( "StudentFactory", [ "$resource", StudentFactoryFunction ])
+  .factory( "StudentFactory", [
+    "$resource",
+   StudentFactoryFunction
+ ])
   .factory("eventFactory", [
     "$resource",
     eventFactoryFunction
@@ -168,13 +172,15 @@ angular
       this.student = StudentFactory.get({id: $stateParams.id})
     }
 
-    function StudentEditControllerFunction(StudentFactory, $stateParams){
-     this.student = StudentFactory.get({id: $stateParams.id})
+    function StudentEditControllerFunction(StudentFactory, $stateParams, $state){
+     this.student = StudentFactory.get({id: $stateParams.id});
      this.update = function(){
-       this.student.$update({id: $stateParams.id})
+       this.student.$update({id: $stateParams.id});
      }
      this.destroy = function(){
-        this.student.$delete({id: $stateParams.id})
+        this.student.$delete({id: $stateParams.id}).then(function(student){
+          $state.go('studentIndex', {}, {reload: true});
+        })
       }
    }
    function linkEventIndexControllerFunction(eventFactory){
@@ -182,7 +188,7 @@ angular
      this.events = eventFactory.query();
    }
 
-   function linkNewEventControllerFunction(eventFactory){
+   function linkNewEventControllerFunction(eventFactory, $state){
      this.event = new eventFactory();
      this.create = function(){
        this.event.$save().then(function(event){
@@ -207,13 +213,17 @@ angular
       }
    }
 
-   function linkEventEditControllerFunction(eventFactory, $stateParams){
+   function linkEventEditControllerFunction(eventFactory, $stateParams, $state){
+
      this.event = eventFactory.get({id: $stateParams.id});
      this.update = function(){
-       this.event.$update({id: $stateParams.id});
+       this.event.$update({id: $stateParams.id})
+       console.log ("edit complete")
      }
      this.destroy = function(){
-       this.event.$delete({id: $stateParams.id});
+       this.event.$delete({id: $stateParams.id}).then(function(thing){
+         $state.go('eventIndex',{},{reload: true});
+       })
      }
    }
 
