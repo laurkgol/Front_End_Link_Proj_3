@@ -1,4 +1,4 @@
-<div ng-controller= 'linkShowEventController as vm'>
+<div ng-controller= 'ShowEventController as vm'>
   <h2>{{vm.event.name}}</h2>
   <p>{{vm.event.date}}, {{vm.event.time}}</p>
   <p>{{vm.event.location}}</p>
@@ -16,11 +16,11 @@
     <form >
 
 
-      <select class="rsvp" name="rsvp" >
-        <option ng-repeat="student in vm.students" >{{student.name}}</option>
+      <select class="rsvp" name="rsvp" ng-model="vm.studentGoing">
+        <option ng-repeat="student in vm.students" value = "student.id" >{{student.name}}</option>
 
       </select>
-      <button type="submit" class="btn" ng-submit = "vm.addAttendance()">I'm going</button>
+      <button type="submit" value="Submit" ng-submit = "vm.addAttendance()">I'm going</button>
     </form>
   </div>
 
