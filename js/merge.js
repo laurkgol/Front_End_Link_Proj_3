@@ -59,6 +59,7 @@ angular
   .controller("ShowEventController", [
     "EventFactory",
     "$stateParams",
+    "$state",
     "AttendanceFactory",
     "StudentFactory",
     ShowEventControllerFunction
@@ -208,25 +209,22 @@ function NewEventControllerFunction(EventFactory){
  }
 }
 
-function ShowEventControllerFunction(EventFactory, $stateParams, AttendanceFactory, StudentFactory){
+function ShowEventControllerFunction(EventFactory, $stateParams, $state, AttendanceFactory, StudentFactory){
   this.event = EventFactory.get({id: $stateParams.id});
   this.attendances = AttendanceFactory.query({id: $stateParams.id});
+  console.log(this.attendances)
   this.students= StudentFactory.query();
+  this.newAttendance = new AttendanceFactory()
   this.addAttendance = function() {
-    this.student= StudentFactory.get({id: this.studentGoing});
-    console.log(this.student)
+    // this.student= StudentFactory.get({id: this.studentGoing});
+    // console.log(this.student)
     // this.event = EventFactory.get({id: $stateParams.id});
-    console.log(this.studentGoing)
-
-    let attendance = {
-      student_id: this.studentGoing,
-      event_id: this.event.id
-    }
-    console.log(attendance)
-    this.newAttendance = new AttendanceFactory()
-    console.log(attendance)
-    this.newAttendance.$save(function(attendance) {
-       $state.go("eventShow", {id: attendance.event_id})
+    // console.log(this.studentGoing)
+    this.newAttendance.event_id = this.event.id
+    console.log(this.newAttendance)
+    this.newAttendance.$save({id: $stateParams.id}, function(attendance) {
+      console.log(attendance)
+       $state.reload()
     })
 
   }

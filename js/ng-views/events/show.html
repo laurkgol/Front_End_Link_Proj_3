@@ -10,14 +10,14 @@
   <div> Attendances </div>
   <div data-ng-repeat="attendance in vm.attendances">
     {{attendance.student_id}}
-    {{attendance.event_id}}
+    
   </div>
 <br><br>
   <div class="going">
     <form >
 
 
-      <select placeholder="Who's going?" class="rsvp" name="rsvp" ng-model="vm.studentGoing">
+      <select placeholder="Who's going?" class="rsvp" name="rsvp" ng-model="vm.newAttendance.student_id">
        <option ng-repeat="student in vm.students" value={{student.id}} ng-model = "vm.newAttendance">{{student.name}}</option>
 
       </select>
