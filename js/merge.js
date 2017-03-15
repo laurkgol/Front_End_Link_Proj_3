@@ -44,7 +44,8 @@ angular
   ])
   .controller("StudentEditController", [
     "StudentFactory",
-    "$stateParams", "$state",
+    "$stateParams",
+    "$state",
     StudentEditControllerFunction
   ])
   .controller("EventIndexController", [
@@ -53,7 +54,7 @@ angular
     EventIndexControllerFunction
   ])
   .controller("NewEventController", [
-    "EventFactory",
+    "EventFactory", "$state",
     NewEventControllerFunction
   ])
   .controller("ShowEventController", [
@@ -66,6 +67,7 @@ angular
   .controller("EventEditController", [
     "EventFactory",
     "$stateParams",
+    "$state",
     EventEditControllerFunction
   ])
 
@@ -165,7 +167,6 @@ function StudentIndexControllerFunction (StudentFactory){
 function StudentNewControllerFunction(StudentFactory, $state){
  this.student = new StudentFactory()
  this.create = function(){
-
    this.student.$save().then(function(student){
      $state.go("studentShow",{id: student.id})
    })
@@ -199,8 +200,8 @@ function EventIndexControllerFunction(EventFactory){
  this.events = EventFactory.query();
 }
 
-function NewEventControllerFunction(EventFactory){
- this.event = new EventFactory();
+function NewEventControllerFunction(EventFactory, $state){
+ this.event = new EventFactory()
  this.create = function(){
    this.event.$save().then(function(event){
      $state.go("eventShow",{id: event.id})
@@ -231,12 +232,18 @@ function ShowEventControllerFunction(EventFactory, $stateParams, AttendanceFacto
   }
 }
 
-function EventEditControllerFunction(EventFactory, $stateParams){
+function EventEditControllerFunction( EventFactory, $stateParams, $state){
  this.event = EventFactory.get({id: $stateParams.id});
  this.update = function(){
-   this.event.$update({id: $stateParams.id});
+   this.event.$update({id: $stateParams.id}).then(function(event){
+     $state.go("eventShow",{id: event.id})
+   })
+   console.log("event updated")
  }
  this.destroy = function(){
-   this.event.$delete({id: $stateParams.id});
+   this.event.$delete({id: $stateParams.id}).then(function (thing){
+     $state.go("eventIndex")
+   })
+   console.log("Event deleted")
  }
 }
