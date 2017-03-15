@@ -86,7 +86,7 @@ function StudentFactoryFunction($resource){
 }
 
 function AttendanceFactoryFunction($resource){
-  return $resource("https://ccg-link-server.herokuapp.com/events/:id/attendences.json", {}, {
+  return $resource("https://ccg-link-server.herokuapp.com/events/:id/attendances.json", {}, {
     update: {method:"PUT"}
   })
 }
