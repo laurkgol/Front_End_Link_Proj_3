@@ -207,33 +207,19 @@ function ShowEventControllerFunction(EventFactory, $stateParams, AttendanceFacto
   this.students= StudentFactory.query();
   this.addAttendance = function() {
     this.student= StudentFactory.get({id: this.studentGoing});
+    // this.event = EventFactory.get({id: $stateParams.id});
+    console.log(this.studentGoing)
     let attendance = {
-      student_id: this.student.id,
+      student_id: this.studentGoing,
       event_id: this.event.id
     }
-    //here you will use AttendanceFactory to post new Attendance to API
-    function addAttendance(AttendanceFactory, attendance) {
-      console.log(attendance)
-      vm.newAttendance = new AttendanceFactory()
-      this.create= function() {
-        this.newAttendance.$save(function(attendance) {
-           $state.go("eventShow", {id: attendance.event_id})
-        })
-      }
-      // let url = `http://localhost:3000/events/${event.id}/attendances.json`
-      // $http({
-      //   method: "POST",
-      //   url: url,
-      //   dataType: "json",
-      //   data: attendance
-      // }).done((response) => {
-      //   console.log('sucess')
-      // }).fail(() => {
-      //   console.log('error')
-      // }).always(() => {
-      //   console.log('request made')
-      // })
-    }
+    console.log(attendance)
+    this.newAttendance = new AttendanceFactory()
+    console.log(attendance)
+    this.newAttendance.$save(function(attendance) {
+       $state.go("eventShow", {id: attendance.event_id})
+    })
+
   }
 }
 
