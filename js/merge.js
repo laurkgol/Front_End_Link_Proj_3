@@ -207,6 +207,7 @@ function ShowEventControllerFunction(EventFactory, $stateParams, AttendanceFacto
   this.students= StudentFactory.query();
   this.addAttendance = function() {
     this.student= StudentFactory.get({id: this.studentGoing});
+    console.log(this.student)
     // this.event = EventFactory.get({id: $stateParams.id});
     console.log(this.studentGoing)
     let attendance = {
@@ -262,10 +263,7 @@ function WelcomeControllerFunction(){
      this.attendances = AttendanceFactory.query({id: $stateParams.id});
      this.students= StudentFactory.query();
      this.student= StudentFactory.query({id: $stateParams.id});
-    //  let studentString =   JSON.stringify(this.students);
      console.log(this.students)
-    //  console.log(studentString)
-
       this.addAttendance = function() {
         let attendance = {
           student_id: this.student.id
