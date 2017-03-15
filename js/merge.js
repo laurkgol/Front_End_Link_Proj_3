@@ -44,7 +44,7 @@ angular
   ])
   .controller("StudentEditController", [
     "StudentFactory",
-    "$stateParams",
+    "$stateParams", "$state",
     StudentEditControllerFunction
   ])
   .controller("EventIndexController", [
@@ -150,20 +150,22 @@ function RouterFunction($stateProvider){
       controllerAs: "vm"
     })
 }
-
-function StudentIndexControllerFunction (StudentFactory){
-  console.log("you're in the index")
-  this.students = StudentFactory.query();
-}
+function WelcomeControllerFunction(){}
 
 function AttendanceIndexControllerFunction (AttendanceFactory, $stateParams){
   console.log("you're in the attendance index")
   this.attendances = AttendanceFactory.query();
 }
 
+function StudentIndexControllerFunction (StudentFactory){
+  console.log("you're in the index")
+  this.students = StudentFactory.query();
+}
+
 function StudentNewControllerFunction(StudentFactory, $state){
  this.student = new StudentFactory()
  this.create = function(){
+
    this.student.$save().then(function(student){
      $state.go("studentShow",{id: student.id})
    })
@@ -174,16 +176,21 @@ function StudentShowControllerFunction (StudentFactory, $stateParams){
   this.student = StudentFactory.get({id: $stateParams.id})
 }
 
-function StudentEditControllerFunction( StudentFactory, $stateParams ){
+function StudentEditControllerFunction( StudentFactory, $stateParams, $state ){
  this.student = StudentFactory.get({id: $stateParams.id});
  this.update = function(){
-   this.student.$update({id: $stateParams.id})
+   this.student.$update({id: $stateParams.id}).then(function(student){
+     $state.go("studentShow",{id: student.id})
+   })
+   console.log("student updated")
+
  }
 
  this.destroy = function(){
     this.student.$delete({id: $stateParams.id}).then(function(student){
       $state.go("studentIndex")
     })
+    console.log("student deleted")
   }
 }
 
@@ -210,6 +217,7 @@ function ShowEventControllerFunction(EventFactory, $stateParams, AttendanceFacto
     console.log(this.student)
     // this.event = EventFactory.get({id: $stateParams.id});
     console.log(this.studentGoing)
+
     let attendance = {
       student_id: this.studentGoing,
       event_id: this.event.id
@@ -233,50 +241,3 @@ function EventEditControllerFunction(EventFactory, $stateParams){
    this.event.$delete({id: $stateParams.id});
  }
 }
-function WelcomeControllerFunction(){
-}
-    function StudentEditControllerFunction(StudentFactory, $stateParams){
-     this.student = StudentFactory.get({id: $stateParams.id})
-     this.update = function(){
-       this.student.$update({id: $stateParams.id})
-     }
-     this.destroy = function(){
-        this.student.$delete({id: $stateParams.id})
-      }
-   }
-   function linkEventIndexControllerFunction(eventFactory){
-     console.log("you're in the event index")
-     this.events = eventFactory.query();
-   }
-
-   function linkNewEventControllerFunction(eventFactory){
-     this.event = new eventFactory();
-     this.create = function(){
-       this.event.$save().then(function(event){
-         $state.go("eventShow",{id: event.id})
-       })
-     }
-   }
-
-   function linkShowEventControllerFunction(eventFactory, $stateParams, AttendanceFactory, StudentFactory){
-     this.event = eventFactory.get({id: $stateParams.id});
-     this.attendances = AttendanceFactory.query({id: $stateParams.id});
-     this.students= StudentFactory.query();
-     this.student= StudentFactory.query({id: $stateParams.id});
-     console.log(this.students)
-      this.addAttendance = function() {
-        let attendance = {
-          student_id: this.student.id
-        }
-      }
-   }
-
-   function linkEventEditControllerFunction(eventFactory, $stateParams){
-     this.event = eventFactory.get({id: $stateParams.id});
-     this.update = function(){
-       this.event.$update({id: $stateParams.id});
-     }
-     this.destroy = function(){
-       this.event.$delete({id: $stateParams.id});
-     }
-   }

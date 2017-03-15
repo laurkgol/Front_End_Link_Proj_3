@@ -5,8 +5,10 @@
   <div data-ng-repeat="student in vm.students">
     <div class="student">
      <p><a data-ui-sref="studentShow({id: student.id})">{{student.name}}</a></p>
+     <a href="mailto:"{{student.email}}>{{student.email}}</a>
      <p>{{student.bio}}</p>
-     <a ng-href={{student.linkedin_url}}>LinkedIn Profile</a>
+     <img ng-src={{student.photo_url}}>
+     <a href={{student.linkedin_url}}>LinkedIn Profile</a>
      <br>
      <a href={{student.github_url}}>Github Profile</a>
     </div>
