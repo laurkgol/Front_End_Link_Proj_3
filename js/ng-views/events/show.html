@@ -17,11 +17,11 @@
     <form >
 
 
-      <select class="rsvp" name="rsvp" ng-model="vm.studentGoing">
-        <option ng-repeat="student in vm.students" value = "student.id" >{{student.name}}</option>
+      <select placeholder="Who's going?" class="rsvp" name="rsvp" ng-model="vm.studentGoing">
+       <option ng-repeat="student in vm.students" value={{student.id}} ng-model = "vm.newAttendance">{{student.name}}</option>
 
       </select>
-      <button type="submit" value="Submit" ng-submit = "vm.addAttendance()">I'm going</button>
+      <button type="submit" value="Submit" ng-click = "vm.addAttendance()">I'm going</button>
     </form>
   </div>
 
