@@ -165,6 +165,7 @@ function AttendanceIndexControllerFunction (AttendanceFactory, $stateParams){
 function StudentNewControllerFunction(StudentFactory, $state){
  this.student = new StudentFactory()
  this.create = function(){
+
    this.student.$save().then(function(student){
      $state.go("StudentShow",{id: student.id})
    })
@@ -184,7 +185,7 @@ function StudentEditControllerFunction( StudentFactory, $stateParams, $state ){
 
  this.destroy = function(){
     this.student.$delete({id: $stateParams.id}).then(function(student){
-      $state.go("StudentIndex", {id: student.id})
+      $state.go("StudentIndex")
     })
     console.log("student deleted")
   }
@@ -209,7 +210,7 @@ function ShowEventControllerFunction(EventFactory, $stateParams, AttendanceFacto
   this.attendances = AttendanceFactory.query({id: $stateParams.id});
   this.students= StudentFactory.query();
   this.addAttendance = function() {
-    this.student= studentFactory.get({id: this.studentGoing});
+    this.student= StudentFactory.get({id: this.studentGoing});
     let attendance = {
       student_id: this.student.id,
       event_id: this.event.id
