@@ -4,6 +4,7 @@
 <div class= "showstudent" ng-controller='StudentShowController as vm'>
 
   <h2>{{vm.student.name}}</h2>
+  <img ng-src={{vm.student.photo_url}}>
   <p><a href="mailto:"{{vm.student.email}}>{{vm.student.email}}</a></p>
   <p>{{vm.student.bio}}</p></p>
   <p><a href={{student.linkedin_url}}>LinkedIn Profile</a></p>
