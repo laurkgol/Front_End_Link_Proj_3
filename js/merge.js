@@ -180,7 +180,7 @@ function StudentEditControllerFunction( StudentFactory, $stateParams, $state ){
  this.student = StudentFactory.get({id: $stateParams.id});
  this.update = function(){
    this.student.$update({id: $stateParams.id}).then(function(student){
-     $state.go("st")
+     $state.go("studentShow",{id: student.id})
    })
    console.log("student updated")
 
