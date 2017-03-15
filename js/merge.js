@@ -221,10 +221,7 @@ function ShowEventControllerFunction(EventFactory, $stateParams, $state, Attenda
   this.students= StudentFactory.query();
   this.newAttendance = new AttendanceFactory()
   this.addAttendance = function() {
-    // this.student= StudentFactory.get({id: this.studentGoing});
-    // console.log(this.student)
-    // this.event = EventFactory.get({id: $stateParams.id});
-    // console.log(this.studentGoing)
+
     this.newAttendance.event_id = this.event.id
     console.log(this.newAttendance)
     this.newAttendance.$save({id: $stateParams.id}, function(attendance) {
