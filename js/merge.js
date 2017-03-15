@@ -74,19 +74,19 @@ angular
   ])
 
 function EventFactoryFunction($resource){
-  return $resource("http://localhost:3000/events/:id.json", {}, {
+  return $resource("https://ccg-link-server.herokuapp.com/events/:id.json", {}, {
     update: {method: "PUT"}
   })
 }
 
 function StudentFactoryFunction($resource){
-  return $resource("http://localhost:3000/students/:id.json", {}, {
+  return $resource("https://ccg-link-server.herokuapp.com/students/:id.json", {}, {
     update: {method: "PUT"}
   })
 }
 
 function AttendanceFactoryFunction($resource){
-  return $resource("http://localhost:3000/events/:id/attendances.json", {}, {
+  return $resource("https://ccg-link-server.herokuapp.com/events/:id/attendences.json", {}, {
     update: {method:"PUT"}
   })
 }
