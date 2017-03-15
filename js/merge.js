@@ -54,7 +54,8 @@ angular
     EventIndexControllerFunction
   ])
   .controller("NewEventController", [
-    "EventFactory", "$state",
+    "EventFactory",
+    "$state",
     NewEventControllerFunction
   ])
   .controller("ShowEventController", [
@@ -202,10 +203,13 @@ function EventIndexControllerFunction(EventFactory){
 
 function NewEventControllerFunction(EventFactory, $state){
  this.event = new EventFactory()
+
  this.create = function(){
-   this.event.$save().then(function(event){
+   this.event.$save(function(event){
+     console.log(event)
      $state.go("eventShow",{id: event.id})
    })
+   console.log("Hello")
  }
 }
 
