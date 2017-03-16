@@ -8,9 +8,12 @@
   <br><br>
 
   <div> Who's Going?</div>
+  <br>
   <div data-ng-repeat="attendance in vm.attendances">
-    {{attendance.student_id}}
-
+    {{vm.findStudent(attendance.student_id).name}}
+    <!-- <div data-ng-repeat="student in vm.students">
+      {{student.name}}
+    </div> -->
   </div>
 <br>
 

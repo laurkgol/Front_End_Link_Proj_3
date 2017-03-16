@@ -221,14 +221,18 @@ function ShowEventControllerFunction(EventFactory, $stateParams, $state, Attenda
   this.students= StudentFactory.query();
   this.newAttendance = new AttendanceFactory()
   this.addAttendance = function() {
-
     this.newAttendance.event_id = this.event.id
     console.log(this.newAttendance)
     this.newAttendance.$save({id: $stateParams.id}, function(attendance) {
       console.log(attendance)
        $state.reload()
     })
-
+  }
+  this.findStudent = function(student_id) {
+    return this.students.find( (student)=> {
+      console.log(student.id, student_id)
+      return student_id == student.id
+    })
   }
 }
 
