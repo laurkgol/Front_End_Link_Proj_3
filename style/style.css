@@ -1,92 +1,307 @@
-
-main{
-  font-family: sans-serif;
-}
-nav{
-  background-color: rgba(189, 22, 0, 1);
-  margin: 0px;
-  /*margin-bottom: 20px;*/
-}
 body{
-  background-image: url("https://st.hzcdn.com/simgs/07717dc10523d1b0_4-9915/contemporary-wallpaper.jpg");
+  background-color: #9CAFB7;
   background-size: cover;
   background-position: top;
+  font-family: 'Poiret One', cursive;
 }
+
 main{
-  background-color: hsla(207, 10%, 37%, 0.66);
   padding: 50px;
   margin: 100px;
+  background-color: #D8D8D8;
+  border: 1px solid #bbb;
+  background-image: linear-gradient(top, rgba(255,255,255,1),
+  rgba(255,255,255,0)),
+  url(data:image/png;base64,iVBORw0KGg[...]QmCC);
+  transition: background-color .2s ease-out;
+  background-clip: padding-box; /* Fix bleeding */
+  border-radius: 3px;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, .3),
+              0 2px 2px -1px rgba(0, 0, 0, .5),
+              0 1px 0 rgba(255, 255, 255, .3) inset;
+  text-shadow: 0 1px 0 rgba(255,255,255, .9);
 }
 
 h2{
-  font-family: 'Pacifico', cursive;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 15px;
+  color: white;
+  text-shadow: 0 1px 0 #30D336;
 }
 
-.photo {
-  width: 300px;
-}
+p {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 17px;
+  text-align: center;
+  color: #615C66;
 
-.photo1{
-  width: 100px;
-}
-
- .navbar{
-   text-align: right;
-   margin-right: 100px;
-   font-family: 'Pacifico', cursive;
-   position: relative;
-   top: -20px;
-
- }
-.logo{
-  font-family: 'Pacifico', cursive;
-  
-  margin-left: 100px;
-  margin-top: 30px;
-  position: relative;
-  bottom: -30px;
 }
 
 a{
   text-decoration: none;
+  color: white;
 }
 
+.about{
+  margin-top:0;
+  margin-bottom: 0;
+  font-size: 18px;
+  text-shadow: 0 2px 0 #05A7FF;
+  border-radius: 10px;
+  background-color: #30D336;
+  overflow: scroll;word-wrap: break-word;
+  zoom: 1;
+  padding: 6px 20px;
+  border: 1px solid #bbb;
+  overflow: inherit;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color .5s ease-out;
+  background-image: linear-gradient(top,    rgba(255,255,255,1),
+  rgba(255,255,255,0)),
+  url(data:image/png;base64,iVBORw0KGg[...]QmCC);
+  background-clip: padding-box; /* Fix bleeding */
+  box-shadow: 0 1px 0 rgba(0, 0, 0, .3),
+              0 2px 2px -1px rgba(0, 0, 0, .5),
+              0 1px 0 rgba(255, 255, 255, .3) inset;
+  text-shadow: 0 1px 0 rgba(255,255,255, .9);
+}
+
+.about:hover, .newevent:hover, .newstudent:hover {
+  background-color: #0AB51B;
+  color: #555;
+}
+
+.about:active, .newevent:active, .newstudent{
+  background: #098255;
+  position: relative;
+  top: 1px;
+  text-shadow: none;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .3) inset;
+}
+
+.enav{
+  color: #FF5E5B;
+}
+.snav{
+  color: #05A7FF;
+}
+.div{
+  color:#30D336;
+}
+.welcome{
+  background-image: url("http://i.imgur.com/KeuNf2L.jpg");
+  background-size: cover;
+  background-position: center;
+}
+.nav{
+  font-size: 25px;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  line-height: 70px;
+  vertical-align: middle;
+  background-color: #D8D8D8;
+  border: 1px solid #bbb;
+  background-image: linear-gradient(top, rgba(255,255,255,1),
+  rgba(255,255,255,0)),
+  url(data:image/png;base64,iVBORw0KGg[...]QmCC);
+  transition: background-color .2s ease-out;
+  background-clip: padding-box; /* Fix bleeding */
+  border-radius: 3px;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, .3),
+              0 2px 2px -1px rgba(0, 0, 0, .5),
+              0 1px 0 rgba(255, 255, 255, .3) inset;
+  text-shadow: 0 1px 0 rgba(255,255,255, .9);
+}
+.intro{
+  text-align: left;
+}
+.code{
+  color: #FF5E5B;
+}
+
+.function {
+  color: #05A7FF;
+}
+
+.models {
+  margin-left: 15px;
+  margin-right: 10px;
+  font-size: 15px;
+  font-family: 'Press Start 2P', cursive;
+  color: white;
+}
+
+.logo {
+  font-size: 25px;
+  font-family: 'Press Start 2P', cursive;
+  margin-left: 10px;
+}
+
+.photo1{
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-bottom: 5px;
+  border:3px solid white;
+
+}
 .students, .events{
   display: flex;
   flex-direction: row;
   justify-content: center;
   justify-content: space-between;
   flex-wrap: wrap;
+  border-radius: 20%;
+
 }
 
-.student, .event{
-  background-color:black;
-  margin: 10px;
+.student{
+  background-color: #05A7FF;
+  font-family: 'Roboto Mono', monospace;
+  margin-top:10px;
+  margin-bottom: 10px;
   padding: 10px;
-  color: white;
-  width: 300px;
+  width: 350px;
+  height: 350px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 200px;
+  min-height: 300px;
+  word-wrap: break-word;
+  zoom: 1;
+  padding: 6px 20px;
+  border: 1px solid #bbb;
+  overflow: inherit;
+  text-decoration: none;
+  white-space: nowrap;
+  background-image: linear-gradient(top,    rgba(255,255,255,1),
+  rgba(255,255,255,0)),
+  url(data:image/png;base64,iVBORw0KGg[...]QmCC);
+  background-clip: padding-box; /* Fix bleeding */
+  border-radius: 20%;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, .3),
+              0 2px 2px -1px rgba(0, 0, 0, .5),
+              0 1px 0 rgba(255, 255, 255, .3) inset;
+  text-shadow: 0 1px 0 rgba(255,255,255, .9);
 }
 
 .event{
-  width: 400px;
-}
-.newstudent, .newevent{
-  background-color:black;
+  background-color: #FF5E5B;
+  font-family: 'Roboto Mono', monospace;
   margin: 10px;
   padding: 10px;
-  width: 300px;
-  display:flex;
+  width: 350px;
+  height: 400px;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
+  min-height: 300px;
+  border-radius: 20%;
+  overflow: scroll;
+  word-wrap: break-word;
+  zoom: 1;
+  padding: 6px 20px;
+  border: 1px solid #bbb;
+  overflow: scroll;
+  text-decoration: none;
+  white-space: nowrap;
+  background-image: linear-gradient(top,    rgba(255,255,255,1),
+  rgba(255,255,255,0)),
+  url(data:image/png;base64,iVBORw0KGg[...]QmCC);
+  background-clip: padding-box; /* Fix bleeding */
+  box-shadow: 0 1px 0 rgba(0, 0, 0, .3),
+              0 2px 2px -1px rgba(0, 0, 0, .5),
+              0 1px 0 rgba(255, 255, 255, .3) inset;
+  text-shadow: 0 1px 0 rgba(255,255,255, .9);
 }
-.newevent{
-  width: 400px;
 
+.title{
+  width: 300px;
+  text-align: center;
+  font-size: 5px;
+}
+
+.bio{
+ overflow: hidden;
+ word-wrap: break-word;
+ max-width: 290px;
+}
+
+.newevent{
+  background-color: #30D336;
+  margin: 10px;
+  padding: 10px;
+  width: 350px;
+  height: 350px;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  font-family: 'Roboto Mono', monospace;
+  border-radius: 20%;
+  transition: background-color .5s ease-out;
+  overflow: scroll;word-wrap: break-word;
+  zoom: 1;
+  padding: 6px 20px;
+  border: 1px solid #bbb;
+  overflow: inherit;
+  text-decoration: none;
+  white-space: nowrap;
+  background-image: linear-gradient(top,    rgba(255,255,255,1),
+  rgba(255,255,255,0)),
+  url(data:image/png;base64,iVBORw0KGg[...]QmCC);
+  background-clip: padding-box; /* Fix bleeding */
+  box-shadow: 0 1px 0 rgba(0, 0, 0, .3),
+              0 2px 2px -1px rgba(0, 0, 0, .5),
+              0 1px 0 rgba(255, 255, 255, .3) inset;
+  text-shadow: 0 1px 0 rgba(255,255,255, .9);
+}
+
+.newevent:hover{
+  background-color: #0AB51B;
+  color: #555;
+}
+
+/*.newevent:active{
+  background: #098255;
+  position: relative;
+  top: 1px;
+  text-shadow: none;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .3) inset;
+}*/
+
+.newstudent{
+  width: 350px;
+  height: 350px;
+  background-color: #30D336;
+  margin: 10px;
+  padding: 10px;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  font-family: 'Roboto Mono', monospace;
+  border-radius: 20%;
+  transition: background-color .5s ease-out;
+  overflow: scroll;word-wrap: break-word;
+  zoom: 1;
+  padding: 6px 20px;
+  border: 1px solid #bbb;
+  overflow: inherit;
+  text-decoration: none;
+  white-space: nowrap;
+  background-image: linear-gradient(top,    rgba(255,255,255,1),
+  rgba(255,255,255,0)),
+  url(data:image/png;base64,iVBORw0KGg[...]QmCC);
+  background-clip: padding-box; /* Fix bleeding */
+  box-shadow: 0 1px 0 rgba(0, 0, 0, .3),
+              0 2px 2px -1px rgba(0, 0, 0, .5),
+              0 1px 0 rgba(255, 255, 255, .3) inset;
+  text-shadow: 0 1px 0 rgba(255,255,255, .9);
 }

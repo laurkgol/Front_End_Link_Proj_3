@@ -19,7 +19,10 @@ angular
     "$resource",
     AttendanceFactoryFunction
   ])
-  .controller("welcomeController",[
+  .controller("AboutController", [ "$stateParams",
+  AboutControllerFunction
+  ])
+  .controller("WelcomeController",[ "$stateParams",
     WelcomeControllerFunction
   ])
   .controller("StudentIndexController", [
@@ -99,6 +102,12 @@ function RouterFunction($stateProvider){
       controller: "WelcomeController",
       controllerAs: "vm"
     })
+    .state("about",{
+      url: "/about",
+      templateUrl: "js/ng-views/about.html",
+      controller: "AboutController",
+      controllerAs: "vm"
+    })
     .state ("studentIndex", {
       url: "/students",
       templateUrl: "js/ng-views/students/index.html",
@@ -154,7 +163,10 @@ function RouterFunction($stateProvider){
       controllerAs: "vm"
     })
 }
-function WelcomeControllerFunction(){}
+function WelcomeControllerFunction($stateParams, $state){
+}
+function AboutControllerFunction($stateParams, $state){
+}
 
 function AttendanceIndexControllerFunction (AttendanceFactory, $stateParams){
   console.log("you're in the attendance index")

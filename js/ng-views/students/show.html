@@ -1,9 +1,9 @@
 <div class= "showstudent" ng-controller='StudentShowController as vm'>
 
-  <h2>{{vm.student.name}}</h2>
+  <h1 class="name">{{vm.student.name}}</h1>
   <img class="photo" ng-src={{vm.student.photo_url}}>
   <p><a href="mailto:"{{vm.student.email}}>{{vm.student.email}}</a></p>
-  <p>{{vm.student.bio}}</p></p>
+  <p class="bio">{{vm.student.bio}}</p>
   <p><a href={{student.linkedin_url}}>LinkedIn Profile</a></p>
   <p><a href={{vm.student.github_url}}> Github Profile</a></p>
 
