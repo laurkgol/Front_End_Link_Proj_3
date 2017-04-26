@@ -1,7 +1,7 @@
 <div ng-controller= 'ShowEventController as vm'>
   <h2>{{vm.event.name}}</h2>
   <p>{{vm.event.date}}, {{vm.event.time}}</p>
-  <p>{{vm.event.location}}</p>
+  <p class= "location">{{vm.event.location}}</p>
   <p>Organized by: {{vm.event.organizer}}</p>
   <p><a href = {{vm.event.event_url}}> Learn More </a></p>
   <a data-ui-sref="eventEdit({id: vm.event.id})">Edit</a>
@@ -10,7 +10,7 @@
   <div> Attendances </div>
   <div data-ng-repeat="attendance in vm.attendances">
     {{attendance.student_id}}
-    
+
   </div>
 <br><br>
   <div class="going">

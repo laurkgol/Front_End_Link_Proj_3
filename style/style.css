@@ -245,7 +245,6 @@ a{
   font-family: 'Roboto Mono', monospace;
   border-radius: 20%;
   transition: background-color .5s ease-out;
-  
   word-wrap: break-word;
   zoom: 1;
   padding: 6px 20px;
